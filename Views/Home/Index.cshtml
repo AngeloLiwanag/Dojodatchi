@@ -1,0 +1,71 @@
+﻿@model Pet
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <ul>
+        <li>Fullness: <span class="text-success">@ViewBag.full</span></li>
+        <li>Happiness: <span class="text-success">@ViewBag.happy</span></li>
+        <li>Meals: <span class="text-success">@ViewBag.meal</span></li>
+        <li>Energy: <span class="text-success">@ViewBag.energy</span></li>
+    </ul>
+</div>
+<div class="border border-dark" style="width:350px; height:350px; margin-left:415px;">
+    <div style="width:200px; height:200px; margin:auto; margin-top:80px;">
+        <img src="~/images/ShinyPikachu.gif" alt="">
+    </div>
+    @if(ViewBag.energy >= 100 && ViewBag.full >= 100 && ViewBag.happy >= 100)
+    {
+        <p class="text-success text-center m-3">You win!!!</p>
+    }
+    @if(ViewBag.full <= 0 || ViewBag.happy <=0)
+    {
+        <p class="text-danger text-center m-3">You Lose!!!</p>
+    }
+    else{
+        <p class="text-success text-center m-3">@ViewBag.message</p>
+    }
+</div>
+<div class="text-center mt-5">
+    <ul>
+        @if(ViewBag.energy >= 100 && ViewBag.full >= 100 && ViewBag.happy >= 100)
+        {
+        <li>
+            <a href="/reset">
+                <button class="btn btn-outline-success btn-sm">reset</button>
+            </a>
+        </li>
+        }
+        @if(ViewBag.full <= 0 || ViewBag.happy <=0)
+        {
+        <li>
+            <a href="/reset">
+                <button class="btn btn-outline-success btn-sm">reset</button>
+            </a>
+        </li>
+        }
+        else{
+                    <li>
+            <a href="/Feed">
+                <button class="btn btn-outline-success btn-sm">Feed</button>
+            </a>
+        </li>
+        <li>
+            <a href="/Play">
+                <button class="btn btn-outline-success btn-sm">Play</button>
+            </a>
+        </li>
+        <li>
+            <a href="/Work">
+                <button class="btn btn-outline-success btn-sm">Work</button>
+            </a>
+        </li>
+        <li>
+            <a href="/Sleep">
+                <button class="btn btn-outline-success btn-sm">Sleep</button>
+            </a>
+        </li>
+        }
+    </ul>
+</div>
